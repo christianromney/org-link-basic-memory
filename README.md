@@ -203,6 +203,34 @@ permalink: folder/note-name
 
 See the `examples/` directory for sample org files demonstrating link usage.
 
+## Testing
+
+### Manual Test
+
+Run the permalink stability test to verify that links remain valid after moving files:
+
+```bash
+./test-permalink-stability.sh
+```
+
+This script creates a temporary Basic Memory project, creates a file, searches for it by permalink, moves the file to a different location, and verifies the same permalink still resolves to the new location.
+
+### How Permalink Stability Works
+
+The package achieves link stability through **indirection via Basic Memory's database**:
+
+1. **No Direct File Paths**: Links only contain permalinks (e.g., `memory://project/note-name`), never file paths
+2. **Real-Time Resolution**: Each link access queries Basic Memory CLI to resolve the current file location
+3. **Database Mapping**: Basic Memory maintains a database mapping `permalink → file_path`
+4. **File Monitoring**: Basic Memory's watch service detects file moves and updates the database
+5. **Result**: Links automatically resolve to new locations after files are moved
+
+**Key Insight**: The stability is provided by Basic Memory itself. Our package simply leverages it by always querying by permalink rather than storing file paths.
+
+### Automated Tests
+
+Automated ERT tests are available in the `test/` directory but require careful timing due to Basic Memory's async file indexing. The manual test script provides reliable validation of permalink stability.
+
 ## Limitations
 
 - Only works with the currently active Basic Memory project
