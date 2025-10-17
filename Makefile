@@ -1,13 +1,9 @@
 .POSIX:
 .PHONY: test clean
 
-EMACS ?= emacs
-TEST_FILES = test/org-link-basic-memory-test.el
-
 test:
-	@echo "Running org-link-basic-memory tests..."
-	$(EMACS) -batch -L . -l test/org-link-basic-memory-test.el \
-		-f ert-run-tests-batch-and-exit
+	@echo "Running permalink stability test..."
+	@./test-permalink-stability.sh
 
 clean:
 	@echo "Cleaning compiled test files..."
