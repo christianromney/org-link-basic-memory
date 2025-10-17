@@ -1,0 +1,26 @@
+#+TITLE: Testing Basic Memory Links
+#+AUTHOR: Christian Romney
+
+* Testing memory:// links
+
+This file demonstrates the org-memory-link integration with Basic Memory.
+
+** Test Link
+
+Here's a link to the Distributed Tracing note:
+[[memory://homepage-platform/distributed-tracing][Distributed Tracing]]
+
+To test:
+1. Load org-memory-link.el in Emacs: ~(load-file "./org-memory-link.el")~
+2. Click the link above (or use ~C-c C-o~ on it)
+3. The markdown file should open in Emacs
+
+** How to Create Links
+
+1. Visit a Basic Memory markdown file (e.g., tracing.md)
+2. Run ~M-x org-store-link~ (usually bound to ~C-c l~)
+3. Return to an org file
+4. Run ~M-x org-insert-link~ (usually bound to ~C-c C-l~)
+5. Select the stored link
+
+The link will be created using the permalink from the file's frontmatter.

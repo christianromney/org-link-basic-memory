@@ -1,0 +1,24 @@
+# Emacs
+*~
+\#*\#
+.\#*
+.*.swp
+.*.swo
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Package managers
+/.cask/
+/dist/
+/.eldev/
