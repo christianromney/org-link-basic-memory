@@ -235,6 +235,17 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Org mode](https://orgmode.org) - The amazing Emacs organization system
 - The Emacs community
 
+## Documentation References
+
+### Basic Memory
+- [Knowledge Format](https://docs.basicmemory.com/guides/knowledge-format/) - Memory URL format and structure
+- [CLI Reference](https://docs.basicmemory.com/guides/cli-reference/) - Command-line tool documentation
+- [Basic Memory Home](https://basicmemory.com) - Official website
+
+### Org Mode
+- [Adding Hyperlink Types](https://orgmode.org/manual/Adding-Hyperlink-Types.html) - Official guide for custom link types
+- [Org Mode Manual](https://orgmode.org/manual/) - Complete org-mode documentation
+
 ## Related Projects
 
 - [basic-memory](https://github.com/cryeprecision/basic-memory) - The Basic Memory MCP server and CLI
