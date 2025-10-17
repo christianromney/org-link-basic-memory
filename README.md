@@ -158,7 +158,22 @@ The package uses three helper functions:
 
 ## Configuration
 
-The package works out of the box with no configuration required, but you can customize behavior if needed:
+The package works out of the box with no configuration required, but you can customize behavior if needed.
+
+### Basic Memory v0.15.0+ Multi-Project Support
+
+If you're using Basic Memory v0.15.0 or later (which introduced multi-project support), you need to specify which project to use:
+
+```elisp
+;; Required for Basic Memory v0.15.0+
+(setq org-link-basic-memory-project-name "main")
+```
+
+Set this to the name of your Basic Memory project as shown in `basic-memory project list`. When `nil` (the default), no project name is passed to the CLI, which works for older versions but will fail with v0.15.0+.
+
+**Why this is needed:** Basic Memory v0.15.0 made project names a required argument for the `project info` command as part of the multi-project architecture changes. See the [v0.15.0 release notes](https://docs.basicmemory.com/whats-new/) for details.
+
+### Other Customizations
 
 ```elisp
 ;; Example: Add a hook when following memory links
@@ -169,15 +184,38 @@ The package works out of the box with no configuration required, but you can cus
 (add-hook 'org-follow-link-hook #'my-memory-link-hook)
 ```
 
+### Customization via Emacs Customize Interface
+
+You can also configure the project name using Emacs' built-in customize interface:
+
+```
+M-x customize-variable RET org-link-basic-memory-project-name RET
+```
+
+Or browse all options:
+
+```
+M-x customize-group RET org-link-basic-memory RET
+```
+
 ## Troubleshooting
 
 ### "Could not determine Basic Memory project path"
 
-Ensure the `basic-memory` CLI is installed and in your PATH:
+**For Basic Memory v0.15.0+:** Make sure you've set the project name in your config:
+
+```elisp
+(setq org-link-basic-memory-project-name "main")
+```
+
+Replace `"main"` with your actual project name from `basic-memory project list`.
+
+**For all versions:** Ensure the `basic-memory` CLI is installed and in your PATH:
 
 ```bash
 which basic-memory
-basic-memory project info
+basic-memory --version
+basic-memory project list
 ```
 
 ### "Could not find note with permalink"
