@@ -28,7 +28,7 @@ Add to `~/.doom.d/packages.el`:
 ```elisp
 (package! org-link-basic-memory
   :recipe (:host github
-           :repo "christian-romney/org-link-basic-memory"))
+           :repo "christianromney/org-link-basic-memory"))
 ```
 
 Then add to `~/.doom.d/config.el`:
@@ -47,7 +47,7 @@ Add to `dotspacemacs-additional-packages`:
 ```elisp
 (org-link-basic-memory :location (recipe
                                    :fetcher github
-                                   :repo "christian-romney/org-link-basic-memory"))
+                                   :repo "christianromney/org-link-basic-memory"))
 ```
 
 Then add to `dotspacemacs/user-config`:
@@ -74,7 +74,7 @@ Then add to `dotspacemacs/user-config`:
 (straight-use-package
  '(org-link-basic-memory :type git
                           :host github
-                          :repo "christian-romney/org-link-basic-memory"))
+                          :repo "christianromney/org-link-basic-memory"))
 ```
 
 ### Manual Installation
@@ -82,7 +82,7 @@ Then add to `dotspacemacs/user-config`:
 Clone the repository:
 
 ```bash
-git clone https://github.com/christian-romney/org-link-basic-memory.git
+git clone https://github.com/christianromney/org-link-basic-memory.git
 ```
 
 Add to your init file:
@@ -243,5 +243,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Support
 
 For issues and questions:
-- File an issue on [GitHub](https://github.com/christian-romney/org-link-basic-memory/issues)
+- File an issue on [GitHub](https://github.com/christianromney/org-link-basic-memory/issues)
 - Check the Basic Memory [documentation](https://docs.basicmemory.com)

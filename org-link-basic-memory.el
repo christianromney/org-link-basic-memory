@@ -3,7 +3,7 @@
 ;; Copyright (C) 2025 Christian Romney
 
 ;; Author: Christian Romney
-;; URL: https://github.com/christian-romney/org-link-basic-memory
+;; URL: https://github.com/christianromney/org-link-basic-memory
 ;; Version: 0.1.0
 ;; Package-Requires: ((emacs "25.1") (org "9.0"))
 ;; Keywords: outlines, hypermedia, basic-memory, org

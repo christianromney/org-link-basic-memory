@@ -24,4 +24,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Seamless integration with org-mode's link system
 - Works with the currently active Basic Memory project
 
-[0.1.0]: https://github.com/christian-romney/org-link-basic-memory/releases/tag/v0.1.0
+[0.1.0]: https://github.com/christianromney/org-link-basic-memory/releases/tag/v0.1.0
