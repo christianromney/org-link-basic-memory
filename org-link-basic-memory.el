@@ -41,16 +41,37 @@
 (require 'ol)
 (require 'json)
 
+;;; Customization
+
+(defgroup org-link-basic-memory nil
+  "Basic Memory link support for Org mode."
+  :group 'org-link
+  :prefix "org-link-basic-memory-")
+
+(defcustom org-link-basic-memory-project-name nil
+  "The name of the Basic Memory project to use.
+This should match a project name from `basic-memory project list'.
+When nil (the default), no project name is passed to `basic-memory project info'.
+Set this to a specific project name (e.g., \"main\") if you have multiple projects
+and the command requires an explicit project name."
+  :type '(choice (const :tag "No project name (default)" nil)
+                 (string :tag "Project name"))
+  :group 'org-link-basic-memory)
+
 ;;; Helper Functions
 
 (defun org-link-basic-memory--get-project-path ()
   "Get the current Basic Memory project path from the CLI.
 Returns the absolute path to the project directory, or nil on error."
   (condition-case err
-      (let* ((output (shell-command-to-string "basic-memory project info 2>/dev/null"))
-             ;; Match the path which appears after "Path:" on the next line
-             ;; The path may be surrounded by box-drawing characters (│)
-             (path-line (when (string-match "Path:[^\n]*\n[^│\n]*│\\s-*\\([^\n│]+\\)" output)
+      (let* ((cmd (if org-link-basic-memory-project-name
+                      (format "basic-memory project info %s 2>/dev/null"
+                              (shell-quote-argument org-link-basic-memory-project-name))
+                    "basic-memory project info 2>/dev/null"))
+             (output (shell-command-to-string cmd))
+             ;; Match the path value on the line containing "│ Path:"
+             ;; Format: │ Path: /Users/... │
+             (path-line (when (string-match "│\\s-*Path:\\s-*\\([^│\n]+\\)\\s-*│" output)
                           (match-string 1 output))))
         (when (and path-line (not (string-empty-p path-line)))
           (string-trim path-line)))
